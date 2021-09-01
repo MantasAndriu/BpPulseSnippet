@@ -1,2 +1,0 @@
-# WSGithub
-WoolSocks test task

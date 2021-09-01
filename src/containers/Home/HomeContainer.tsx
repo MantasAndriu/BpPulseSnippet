@@ -11,6 +11,13 @@ import Loader from "../../components/Loader";
 import ErrorMessage from "../../components/ErrorMessage";
 
 
+export function validateButton(org: string, repo:string) {
+  if(repo.length > 0 && org.length > 0){
+    return true
+  } 
+  return false
+}
+
 function HomeContainer() {
 
   const [org, setOrg] = useState("octocat");
@@ -24,8 +31,9 @@ function HomeContainer() {
     dispatch(fetchIssuesRequest(org, repo));
   }, []);
 
+
   function onSearchClick(){
-    if(repo.length > 0 && org.length > 0){
+    if(validateButton(org, repo)){
         dispatch(fetchIssuesRequest(org, repo));
     }
   }

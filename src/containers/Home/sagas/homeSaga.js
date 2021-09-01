@@ -1,5 +1,5 @@
 import axios from "axios";
-import { all, call, put, takeLatest } from "redux-saga/effects";
+import { call, put, takeLatest } from "redux-saga/effects";
 import {
   fetchIssuesFailure,
   fetchIssuesSuccess
@@ -9,7 +9,7 @@ import { issuesTypes } from "../constants/actionTypes";
 const getIssues = (props) =>
   axios.get(`https://api.github.com/repos/${props.org}/${props.repo}/issues`);
 
-function* fetchIssuesSaga(action) {
+export function* fetchIssuesSaga(action) {
   try {
     const response = yield call(getIssues, {org: action.org, repo: action.repo});
     yield put(
@@ -27,7 +27,7 @@ function* fetchIssuesSaga(action) {
 }
 
 function* homeWatcher() {
-  yield all([takeLatest(issuesTypes.FETCH_ISSUES_REQUEST, fetchIssuesSaga)]);
+  yield (takeLatest(issuesTypes.FETCH_ISSUES_REQUEST, fetchIssuesSaga));
 }
 
 export default homeWatcher;
