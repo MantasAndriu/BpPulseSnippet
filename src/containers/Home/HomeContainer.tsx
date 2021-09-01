@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import DataTableComponent from '../../components/DataTableComponent';
-import Header from '../../components/Header';
+import DataTableComponent from "../../components/DataTableComponent";
+import Header from "../../components/Header";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../common/reducers";
 import { columns } from "./HomeTable.constants";
@@ -10,16 +10,14 @@ import SearchButton from "../../components/SearchButton";
 import Loader from "../../components/Loader";
 import ErrorMessage from "../../components/ErrorMessage";
 
-
-export function validateButton(org: string, repo:string) {
-  if(repo.length > 0 && org.length > 0){
-    return true
-  } 
-  return false
+export function validateButton(org: string, repo: string) {
+  if (repo.length > 0 && org.length > 0) {
+    return true;
+  }
+  return false;
 }
 
 function HomeContainer() {
-
   const [org, setOrg] = useState("octocat");
   const [repo, setRepo] = useState("hello-world");
   const dispatch = useDispatch();
@@ -31,17 +29,15 @@ function HomeContainer() {
     dispatch(fetchIssuesRequest(org, repo));
   }, []);
 
-
-  function onSearchClick(){
-    if(validateButton(org, repo)){
-        dispatch(fetchIssuesRequest(org, repo));
+  function onSearchClick() {
+    if (validateButton(org, repo)) {
+      dispatch(fetchIssuesRequest(org, repo));
     }
   }
 
-
   return (
     <>
-      <Header name={'Home'} />
+      <Header name={"Home"} />
       <InputField
         placeholder={"Enter Github Organization"}
         value={org}
@@ -54,19 +50,14 @@ function HomeContainer() {
         setValue={setRepo}
         label={"Repository"}
       />
-      <SearchButton 
-        title={"Search for issues"}
-        onClick={onSearchClick}
-      />
+      <SearchButton title={"Search for issues"} onClick={onSearchClick} />
       {pending ? (
         <Loader />
       ) : error ? (
         <ErrorMessage />
       ) : (
-      <DataTableComponent 
-        columns={columns}
-        data={issues}
-      />)}
+        <DataTableComponent columns={columns} data={issues} />
+      )}
     </>
   );
 }

@@ -4,7 +4,7 @@ import { IssuesActions, IssuesState } from "../types/types";
 const initialState: IssuesState = {
   pending: false,
   issues: [],
-  error: null
+  error: null,
 };
 
 export default (state = initialState, action: IssuesActions) => {
@@ -12,25 +12,25 @@ export default (state = initialState, action: IssuesActions) => {
     case issuesTypes.FETCH_ISSUES_REQUEST:
       return {
         ...state,
-        pending: true
+        pending: true,
       };
     case issuesTypes.FETCH_ISSUES_SUCCESS:
       return {
         ...state,
         pending: false,
         issues: action.payload.issues,
-        error: null
+        error: null,
       };
     case issuesTypes.FETCH_ISSUES_FAILURE:
       return {
         ...state,
         pending: false,
         issues: [],
-        error: action.payload.error
+        error: action.payload.error,
       };
     default:
       return {
-        ...state
+        ...state,
       };
   }
 };

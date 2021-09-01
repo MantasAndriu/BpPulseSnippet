@@ -1,16 +1,16 @@
-import React from "react"
-import DataTable from "react-data-table-component"
+import React from "react";
+import DataTable from "react-data-table-component";
 
 type TableProps = {
-    columns: any;
-    data: any;
-}
+  columns: any;
+  data: any;
+};
 
 const customStyles = {
   table: {
     style: {
       width: "100%",
-      padding: "4em"
+      padding: "4em",
     },
   },
   header: {
@@ -43,12 +43,12 @@ const customStyles = {
       fontSize: "15px",
       borderTop: "none",
       paddingRight: "4em",
-      paddingLeft: "4em"
+      paddingLeft: "4em",
     },
   },
-}
+};
 
-const DataTableComponent = (props : TableProps) => {
+const DataTableComponent = (props: TableProps) => {
   return (
     <DataTable
       columns={props.columns}
@@ -59,7 +59,7 @@ const DataTableComponent = (props : TableProps) => {
       paginationPerPage={10}
       selectableRows={false}
     />
-  )
-}
+  );
+};
 
 export default DataTableComponent;

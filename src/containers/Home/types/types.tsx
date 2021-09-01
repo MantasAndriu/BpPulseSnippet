@@ -16,8 +16,8 @@ export interface FetchIssuesFailurePayload {
 
 export interface FetchIssuesRequest {
   type: typeof issuesTypes.FETCH_ISSUES_REQUEST;
-  org:string,
-  repo:string
+  org: string;
+  repo: string;
 }
 
 export type FetchIssuesSuccess = {
